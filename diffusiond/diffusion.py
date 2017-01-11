@@ -9,13 +9,14 @@ import operator
 from scipy.sparse import coo_matrix,csc_matrix
 from scipy.sparse.linalg import expm, expm_multiply
 import networkx as nx
+import json
 
 class Diffuser:
 
     def __init__(self, networkN, options):
         logging.info('Diffuser: Initializing')
         self.network = networkN
-        self.time_T = options.get('time', 0.1, float),
+        self.time_T = options.get('time', 0.1)
         self.calculate_kernel = options.get('kernel', 'False') == 'True'
         input_vector= options.get('heatvector', '')
         diffuse_key= options.get('heatattribute', 'diffusion_input')
